@@ -51,6 +51,22 @@ echo "================================\n\n";
 echo "What's the number of the movie you'd like to see? ";
 
 // TODO 3: Ask the user to choose a movie; reject invalid choices.
+
+$index = -1;
+
+// Loop until they provide valid input
+do {
+    $input = trim(fgets(STDIN));
+    if (! preg_match('/[0-9]+/', $input)) {
+        echo "\nThat doesn't seem right, please try typing one of the numbers in the list above.\n";
+        echo "What's the number of the movie you'd like to see? ";
+    } else {
+        $index = (int) $input;
+    }
+} while($index < 0);
+
+$selected = $movies[$index - 1];
+
 // TODO 4: Ask how many tickets they want (between 1 and 6).
 // TODO 5: Loop once per ticket, asking for that person's age.
 // TODO 6: Work out the ticket type and price for each age.
