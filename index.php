@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 namespace Ticketer;
+require 'rating.php';
+require 'movie.php';
 
 // Week 01: Movie Ticket Booking
 // Run from the repository root: php index.php
@@ -38,6 +40,16 @@ $movies = [ # I wanted to be able to access the code from movie->rating->code
 ];
 
 // TODO 2: Display the movies as a numbered menu, using a loop.
+
+echo "================================\n";
+
+for($i = 0; $i < count($movies); $i++) {
+    echo ($i + 1) . ": " . $movies[$i]->toString() . "\n";
+}
+
+echo "================================\n\n";
+echo "What's the number of the movie you'd like to see? ";
+
 // TODO 3: Ask the user to choose a movie; reject invalid choices.
 // TODO 4: Ask how many tickets they want (between 1 and 6).
 // TODO 5: Loop once per ticket, asking for that person's age.

@@ -4,14 +4,18 @@ namespace Ticketer;
 
 class Movie {
     public string $title;
-    public string $rating;
+    public object $rating;
 
-    function __construct(string $title, string $rating) {
+    function __construct(string $title, object $rating) {
         $this->title = $title;
         $this->rating = $rating;
     }
 
     function canSee(int $age) {
         return $this->rating->age <= $age;
+    }
+
+    function toString() {
+        return $this->title . ", " . $this->rating->code;
     }
 }
