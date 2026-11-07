@@ -47,8 +47,7 @@ for($i = 0; $i < count($movies); $i++) {
     echo ($i + 1) . ": " . $movies[$i]->toString() . "\n";
 }
 
-echo "================================\n\n";
-echo "What's the number of the movie you'd like to see? ";
+echo "================================\n";
 
 // TODO 3: Ask the user to choose a movie; reject invalid choices.
 
@@ -56,10 +55,10 @@ $index = -1;
 
 // Loop until they provide valid input
 do {
+    echo "\nWhat's the number of the movie you'd like to see? ";
     $input = trim(fgets(STDIN));
     if (! preg_match('/[0-9]+/', $input)) {
-        echo "\nThat doesn't seem right, please try typing one of the numbers in the list above.\n";
-        echo "What's the number of the movie you'd like to see? ";
+        echo "\nThat doesn't seem right, please try typing one of the numbers in the list above.";
     } else {
         $index = (int) $input;
     }
@@ -68,6 +67,20 @@ do {
 $selected = $movies[$index - 1];
 
 // TODO 4: Ask how many tickets they want (between 1 and 6).
+
+$tickets = -1;
+
+// Loop until they provide valid input
+do {
+    echo "\nHow many tickets (1-6) would you like? ";
+    $input = trim(fgets(STDIN));
+    if (! preg_match('/[1-6]/', $input)) {
+        echo "\nThat doesn't seem right, please try typing a number between 1 and 6.";
+    } else {
+        $tickets = (int) $input;
+    }
+} while($tickets < 0);
+
 // TODO 5: Loop once per ticket, asking for that person's age.
 // TODO 6: Work out the ticket type and price for each age.
 // TODO 7: Check the selected film's classification against each age.
