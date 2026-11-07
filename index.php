@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Ticketer;
+
 // Week 01: Movie Ticket Booking
 // Run from the repository root: php index.php
 //
@@ -19,6 +21,22 @@ $name = trim(fgets(STDIN));
 echo "\nHi, {$name}! Your movie booking starts here.\n\n";
 
 // TODO 1: Create an array of at least three movies, each with a title and rating.
+
+$ratings = [ # This is clunkyyyy
+    "G" => new Rating("G", 0),
+    "PG" => new Rating("PG", 0),
+    "M" => new Rating("M", 0),
+    "MA15+" => new Rating("MA15+", 0),
+    "R18+" => new Rating("R18+", 0),
+]; # it only exists so that this is "extensible"
+
+$movies = [ # I wanted to be able to access the code from movie->rating->code
+    new Movie("Star Voyage", $ratings["PG"]),
+    new Movie("The Last Dragon", $ratings["M"]),
+    new Movie("Midnight Escape", $ratings["MA15+"]),
+    new Movie("The Haunted House", $ratings["R18+"]),
+];
+
 // TODO 2: Display the movies as a numbered menu, using a loop.
 // TODO 3: Ask the user to choose a movie; reject invalid choices.
 // TODO 4: Ask how many tickets they want (between 1 and 6).
